@@ -47,6 +47,8 @@ Sin dependencias ni build: `index.html`, `styles.css`, scripts clásicos en `js/
 
 ### Pruebas
 
+Necesitan Node.js 24 o posterior (la app en sí no usa Node: corre en el navegador).
+
 ```
 npm install
 npx playwright install chromium
