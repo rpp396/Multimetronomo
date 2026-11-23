@@ -6,7 +6,8 @@ on:
 
 jobs:
   pruebas:
-    runs-on: ubuntu-latest
+    # ubuntu-24.04 fijo: Playwright no tiene navegadores para Ubuntu 26.04 (el ubuntu-latest actual)
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
