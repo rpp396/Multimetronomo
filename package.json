@@ -1,0 +1,12 @@
+{
+  "name": "multimetronomo",
+  "private": true,
+  "description": "Metrónomo web para el celular (sin build). Este package.json solo existe para las pruebas y para rehacer la ayuda.",
+  "scripts": {
+    "test": "node tests/run.js",
+    "ayuda": "node tools/ayuda.js"
+  },
+  "devDependencies": {
+    "playwright": "1.56.1"
+  }
+}

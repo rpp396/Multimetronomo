@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; worker-src 'self'; base-uri 'none'; form-action 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Multimetrónomo</title>
+<meta name="description" content="Metrónomo para el celular: pulso con luces y pelota, tap tempo y listas de temas con sus tempos.">
+<meta name="theme-color" content="#FFFFFF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1A1E27" media="(prefers-color-scheme: dark)">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Multimetrónomo">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="brand">
+    <span class="logo" role="img" aria-label="Logo de Multimetrónomo"></span>
+    <h1>Multimetrónomo</h1>
+    <div class="hbtns">
+      <button type="button" class="icon-btn" id="guideBtn" aria-label="Ver la guía de bienvenida" title="Ver la guía">?</button>
+      <a class="icon-btn" id="pdfBtn" href="ayuda/Multimetronomo-ayuda.pdf" target="_blank" rel="noopener" aria-label="Ayuda en PDF" title="Ayuda en PDF"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg></a>
+    </div>
+  </header>
+
+  <main class="app" id="app">
+    <div class="pulse" id="pulse" aria-hidden="true">
+      <div class="track" id="track"><span class="light" id="lL"></span><span class="ball" id="ball"></span><span class="light" id="lR"></span></div>
+    </div>
+
+    <div class="mainrow">
+      <button type="button" class="sound" id="sound" aria-pressed="true"></button>
+      <div class="bpmbox">
+        <input class="bpm" id="bpm" type="number" inputmode="numeric" min="30" max="300" aria-label="Tempo en pulsos por minuto">
+        <span class="mark" id="mark"></span>
+      </div>
+      <button type="button" class="play" id="play"></button>
+    </div>
+
+    <div class="tempo">
+      <button type="button" class="step s5" data-step="-5" aria-label="Bajar el tempo 5">−5</button>
+      <button type="button" class="step" data-step="-1" aria-label="Bajar el tempo 1">−</button>
+      <button type="button" class="tap" id="tap"><span class="tap-main">Tap tempo</span><span class="tap-sub" id="tapSub">Toca al ritmo</span></button>
+      <button type="button" class="step" data-step="1" aria-label="Subir el tempo 1">+</button>
+      <button type="button" class="step s5" data-step="5" aria-label="Subir el tempo 5">+5</button>
+    </div>
+    <div class="slider-wrap">
+      <input type="range" id="slider" min="30" max="300" aria-label="Tempo">
+      <span class="slider-hit" id="sliderHit" aria-hidden="true"></span>
+      <div class="ends" aria-hidden="true"><span>30</span><span>300</span></div>
+    </div>
+
+    <div class="row"><span class="lbl" id="presetsLbl">Temas prefijados</span><button type="button" class="link" id="edit" aria-pressed="false">Editar</button></div>
+    <div id="sheetBox"></div>
+    <div class="grid" id="grid" role="group" aria-labelledby="presetsLbl"></div>
+
+    <div class="lists" id="lists"></div>
+    <div id="listBox"></div>
+  </main>
+</div>
+
+<nav class="dock" aria-label="Tema anterior y siguiente">
+  <div class="dock-in">
+    <button type="button" class="nav" data-go="-1" aria-label="Tema anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <div class="cur" id="cur" aria-live="polite"></div>
+    <button type="button" class="nav" data-go="1" aria-label="Tema siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+  </div>
+</nav>
+
+<dialog class="guide" id="guide" aria-labelledby="guideTitle">
+  <div class="guide-in" id="guideIn">
+    <div class="guide-top"><span class="guide-step" id="guideStep"></span><button type="button" class="link" id="guideSkip">Saltar</button></div>
+    <div class="guide-art" id="guideArt" aria-hidden="true"></div>
+    <div class="guide-body"><h2 id="guideTitle"></h2><div id="guideText"></div></div>
+    <div class="dots" id="guideDots" aria-hidden="true"></div>
+    <div class="guide-nav"><button type="button" class="btn" id="guidePrev">Anterior</button><button type="button" class="btn pri" id="guideNext">Siguiente</button></div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+<div class="sr-only" id="srLive" aria-live="polite"></div>
+
+<script src="js/datos.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/pulso.js"></script>
+<script src="js/tempo.js"></script>
+<script src="js/temas.js"></script>
+<script src="js/listas.js"></script>
+<script src="js/compartir.js"></script>
+<script src="js/guia.js"></script>
+<script src="js/inicio.js"></script>
+</body>
+</html>

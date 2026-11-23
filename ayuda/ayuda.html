@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Multimetrónomo · Ayuda</title>
+<!-- Fuente de la ayuda en PDF. Se convierte con: node tools/ayuda.js -->
+<style>
+@font-face{font-family:'Atkinson Hyperlegible';font-weight:400;src:url(../fonts/atkinson-hyperlegible-400-latin.woff2) format('woff2')}
+@font-face{font-family:'Atkinson Hyperlegible';font-weight:700;src:url(../fonts/atkinson-hyperlegible-700-latin.woff2) format('woff2')}
+@font-face{font-family:'Young Serif';font-weight:400;src:url(../fonts/young-serif-400-latin.woff2) format('woff2')}
+@font-face{font-family:'JetBrains Mono';font-weight:500 700;src:url(../fonts/jetbrains-mono-latin.woff2) format('woff2')}
+@page{size:A4;margin:16mm 16mm 18mm}
+:root{--ink:#141821;--muted:#586173;--line:#D2D7E0;--panel:#F4F6F9;--accent:#2340C4;--mk:#C23049}
+*{box-sizing:border-box}
+body{margin:0;font-family:'Atkinson Hyperlegible',system-ui,sans-serif;font-size:10.5pt;line-height:1.5;color:var(--ink)}
+h1,h2{font-family:'Young Serif',Georgia,serif;font-weight:400;margin:0}
+h1{font-size:30pt;line-height:1.1}
+h2{font-size:17pt;margin:0 0 8pt;break-after:avoid}
+h3{font-size:11pt;margin:10pt 0 3pt;break-after:avoid}
+p{margin:0 0 6pt}
+ul,ol{margin:0 0 6pt;padding-left:16pt}
+li{margin:0 0 3pt}
+b{font-weight:700}
+code,.mono{font-family:'JetBrains Mono',monospace;font-size:9.5pt}
+.cover{height:250mm;display:flex;flex-direction:column;justify-content:center;gap:14pt;break-after:page}
+.cover img{width:34mm;height:34mm}
+.cover .sub{font-size:14pt;color:var(--muted);max-width:120mm}
+.cover .toc{margin-top:18pt;border-top:1px solid var(--line);padding-top:12pt;columns:2;column-gap:12mm;font-size:10.5pt}
+.cover .toc li{break-inside:avoid}
+section{break-before:page}
+section.cont{break-before:auto;margin-top:14pt}
+.two{display:grid;grid-template-columns:64mm 1fr;gap:9mm;align-items:start}
+.shot{width:64mm;border:1px solid var(--line);border-radius:6mm;overflow:hidden;display:block}
+.shot img{width:100%;display:block}
+.shot.crop{height:116mm}
+.shot.crop img{object-fit:cover;object-position:top;height:100%}
+.n{display:inline-block;width:15pt;height:15pt;border-radius:50%;background:var(--mk);color:#fff;font-weight:700;font-size:8.5pt;line-height:15pt;text-align:center;margin-right:4pt;vertical-align:1pt}
+.legend li{list-style:none;margin-left:-16pt;break-inside:avoid}
+.box{background:var(--panel);border-radius:3mm;padding:8pt 10pt;margin:6pt 0;break-inside:avoid}
+.txt{background:#fff;border:1px solid var(--line);border-radius:2mm;padding:6pt 9pt;white-space:pre;font-family:'JetBrains Mono',monospace;font-size:9pt;line-height:1.5;margin:4pt 0 8pt}
+.k{display:inline-block;min-width:14pt;padding:0 4pt;border:1px solid var(--line);border-radius:3pt;font-family:'JetBrains Mono',monospace;font-size:9pt;text-align:center;background:#fff}
+table{border-collapse:collapse;width:100%;font-size:10pt;margin:4pt 0 8pt}
+th,td{text-align:left;padding:4pt 6pt;border-bottom:1px solid var(--line);vertical-align:top}
+th{font-size:8.5pt;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.faq h3{margin-top:9pt}
+.small{font-size:9.5pt;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<div class="cover">
+  <img src="../icons/logo-print.png" alt="">
+  <h1>Multimetrónomo</h1>
+  <p class="sub">Guía de uso del metrónomo para el celular: el pulso, el tempo, los temas prefijados y las listas de temas.</p>
+  <ol class="toc">
+    <li>La pantalla</li>
+    <li>El pulso</li>
+    <li>Empezar, detener y silenciar</li>
+    <li>Elegir el tempo</li>
+    <li>Temas prefijados</li>
+    <li>Listas de temas y carpetas</li>
+    <li>Compartir e importar</li>
+    <li>Instalar en el celular y usar sin conexión</li>
+    <li>Preguntas frecuentes</li>
+  </ol>
+</div>
+
+<section>
+  <h2>1. La pantalla</h2>
+  <div class="two">
+    <span class="shot"><img src="../docs/capturas/1-pantalla-principal.png" alt="Pantalla principal con las partes numeradas"></span>
+    <div>
+      <p>Todo está en una sola pantalla, en el orden en que se usa:</p>
+      <ul class="legend">
+        <li><span class="n">1</span><b>Pulso:</b> la pelota y las dos luces. Queda fijo arriba al desplazar.</li>
+        <li><span class="n">2</span><b>Sonido:</b> silencia o activa el clic sin parar el metrónomo.</li>
+        <li><span class="n">3</span><b>Tempo</b> en pulsos por minuto (ppm), con su término italiano. Tócalo para escribirlo.</li>
+        <li><span class="n">4</span><b>Empezar ▶ / Detener ■.</b></li>
+        <li><span class="n">5</span><b>−5 · − · Tap tempo · + · +5.</b></li>
+        <li><span class="n">6</span><b>Deslizante</b> de 30 a 300 ppm.</li>
+        <li><span class="n">7</span><b>Temas prefijados</b> de la lista actual; <b>+ Guardar</b> añade el tempo actual.</li>
+        <li><span class="n">8</span><b>Lista de temas:</b> el desplegable con las carpetas, y Nueva, Compartir e Importar.</li>
+        <li><span class="n">9</span><b>‹ Tema anterior · tema actual · siguiente ›</b>, siempre a la vista abajo.</li>
+        <li><span class="n">10</span><b>?</b> vuelve a mostrar la guía de bienvenida.</li>
+        <li><span class="n">11</span>Abre esta <b>ayuda en PDF</b>.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>2. El pulso</h2>
+  <div class="two">
+    <span class="shot"><img src="../docs/capturas/3-desplazada.png" alt="Pantalla desplazada: el pulso sigue arriba y los botones anterior y siguiente abajo"></span>
+    <div>
+      <p>En cada pulso la <b>pelota llega a un extremo</b> de la línea y se <b>enciende la luz</b> de ese lado. Así, el pulso 1 cae a la izquierda, el 2 a la derecha, el 3 a la izquierda… La pelota va a velocidad constante, de modo que siempre puedes anticipar cuándo llega el siguiente.</p>
+      <p>Todos los pulsos suenan igual: no hay acento.</p>
+      <p>Cuando deslizas la pantalla, el indicador <b>queda fijo arriba</b> (con una sombra para separarlo) y la barra con <b>‹ ›</b> queda fija abajo. En la captura de la izquierda la página está desplazada hasta las listas de temas y el pulso sigue a la vista.</p>
+      <div class="box"><b>Consejo:</b> en el atril o junto a la batería, mira la pelota con el rabillo del ojo; las luces confirman en qué lado cae el pulso.</div>
+    </div>
+  </div>
+
+  <h2 class="cont-h" style="margin-top:14pt">3. Empezar, detener y silenciar</h2>
+  <ul>
+    <li><b>▶</b> empieza y <b>■</b> detiene. El botón se pone rojo mientras suena.</li>
+    <li>El <b>altavoz</b> quita o devuelve el sonido sin parar el metrónomo: la pelota y las luces siguen. Sirve para practicar con el pulso visual o para no molestar.</li>
+    <li>Mientras suena, la pantalla <b>no se apaga</b> (si el navegador lo permite).</li>
+    <li>Con un teclado físico, <span class="k">Espacio</span> empieza o detiene y <span class="k">←</span> <span class="k">→</span> pasan al tema anterior o al siguiente.</li>
+  </ul>
+</section>
+
+<section>
+  <h2>4. Elegir el tempo</h2>
+  <p>El tempo va de <b>30 a 300</b> pulsos por minuto. Puedes cambiarlo de varias formas, también con el metrónomo en marcha (el cambio se oye desde el pulso siguiente):</p>
+  <table>
+    <tr><th>Control</th><th>Qué hace</th></tr>
+    <tr><td><b>El número</b></td><td>Tócalo, escribe el tempo y pulsa Intro (o toca fuera).</td></tr>
+    <tr><td><b>− / +</b></td><td>Bajan o suben de 1 en 1. Mantenidos, repiten cada vez más rápido y, al final, de 5 en 5.</td></tr>
+    <tr><td><b>−5 / +5</b></td><td>Bajan o suben de 5 en 5. Mantenidos, repiten.</td></tr>
+    <tr><td><b>Tap tempo</b></td><td>Tócalo al ritmo de la música, 4 veces o más. Desde el segundo toque calcula el tempo con la media de los últimos 8 toques. Si dejas de tocar 2 segundos, la cuenta vuelve a empezar.</td></tr>
+    <tr><td><b>Deslizante</b></td><td>Arrástralo <b>de lado</b>. Un toque suelto o un gesto hacia arriba o abajo (para desplazar la página) <b>no</b> cambian el tempo, así no lo mueves sin querer. Al arrastrar, el tempo parte del valor que tenía, sin saltar.</td></tr>
+  </table>
+  <p>Debajo del número aparece el <b>término italiano</b> aproximado (Adagio, Andante, Allegro…).</p>
+  <p class="small">Si eliges un tema y después cambias el tempo a mano, abajo pasa a decir «Tempo libre». Entonces ‹ › saltan al tema de tempo más cercano por debajo o por encima.</p>
+</section>
+
+<section>
+  <h2>5. Temas prefijados</h2>
+  <div class="two">
+    <span class="shot"><img src="../docs/capturas/4-guardar-tema.png" alt="Formulario para guardar el tempo actual con un nombre"></span>
+    <div>
+      <h3>Guardar un tempo</h3>
+      <p>Ajusta el tempo y toca <b>+ Guardar … ppm</b> al final de la grilla. Escribe un <b>nombre</b> (por ejemplo, el del tema) y toca <b>Guardar</b>. Si lo dejas vacío, se llama «Tema 7».</p>
+      <h3>Usar los temas</h3>
+      <p>Toca un tema de la grilla para usar su tempo. El elegido se ve en azul.</p>
+      <p>Los botones <b>‹</b> y <b>›</b> de la barra de abajo pasan al tema anterior o al siguiente de la lista. Después del último vuelve al primero. En el medio se ve el nombre del tema y su posición («2 de 6»).</p>
+      <h3>Editar</h3>
+      <p>Toca <b>Editar</b> (arriba a la derecha de la grilla). Los temas se marcan con un lápiz; al tocar uno puedes cambiar su <b>nombre</b> o su <b>tempo</b>, moverlo <b>antes</b> o <b>después</b>, o <b>borrarlo</b> (pide un segundo toque para confirmar). Toca <b>Listo</b> para terminar.</p>
+      <p class="small">Una lista de temas admite hasta 60 temas.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>6. Listas de temas y carpetas</h2>
+  <div class="two">
+    <span class="shot"><img src="../docs/capturas/6-listas-carpetas.png" alt="Desplegable de listas de temas agrupadas en carpetas"></span>
+    <div>
+      <p>Los temas se guardan en <b>listas de temas</b>: una por concierto, por alumno, por banda o para tu rutina de estudio. Las listas se ordenan en <b>carpetas</b>.</p>
+      <h3>Elegir una lista</h3>
+      <p>Toca el desplegable <b>Lista de temas</b>. Aparecen las carpetas con sus listas; toca una carpeta para abrirla o cerrarla, y toca una lista para usarla. Las listas sin carpeta van al final. Al cambiar de lista se carga su primer tema.</p>
+      <h3>Crear una lista</h3>
+      <p>Toca <b>+ Nueva</b>, escribe el nombre y, si quieres, la carpeta. La lista empieza vacía: ajusta un tempo y guárdalo con <b>+ Guardar</b>.</p>
+      <h3>Nombre, carpeta y borrar</h3>
+      <p>Con <b>Editar</b> activo aparecen <b>Nombre y carpeta</b> y <b>Borrar lista</b>. Para mover una lista a otra carpeta, cambia el campo Carpeta: puedes elegir una existente o escribir una nueva. Si la dejas vacía, la lista queda sin carpeta. Una carpeta existe mientras tenga alguna lista.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>7. Compartir e importar</h2>
+  <div class="two">
+    <span class="shot"><img src="../docs/capturas/8-compartir.png" alt="Compartir una lista como texto o como enlace"></span>
+    <div>
+      <h3>Compartir</h3>
+      <p>Toca <b>Compartir</b> y elige <b>Esta lista</b> o <b>Todas</b>. Hay dos formas:</p>
+      <ul>
+        <li><b>Copiar texto:</b> fácil de leer y de pegar en un mensaje o en una nota.</li>
+        <li><b>Copiar enlace:</b> una dirección que lleva la lista adentro. Quien la abre ve qué contiene y decide si la añade.</li>
+      </ul>
+      <p>En el celular también puede aparecer <b>Enviar…</b>, que abre el menú de compartir del sistema.</p>
+      <p class="small">Si el enlace pasa de 2000 caracteres, la app avisa: algunas apps de mensajería cortan los enlaces largos. En ese caso, comparte el texto.</p>
+      <h3>El formato de texto</h3>
+      <div class="txt">Lista de temas: Concierto del sábado
+Carpeta: Conciertos
+Apertura: 126
+Vals: 84</div>
+      <p>Cada línea con un número entre 30 y 300 es un tema: el número es el tempo y el resto, el nombre. También valen «Vals 84», «Vals - 84 bpm» o «84 Vals». Las líneas que empiezan con <code>#</code> se ignoran. Varias listas van una tras otra, cada una con su línea «Lista de temas:».</p>
+    </div>
+  </div>
+  <section class="cont">
+  <div class="two">
+    <span class="shot"><img src="../docs/capturas/9-importar.png" alt="Importar: vista previa de lo que se añadirá"></span>
+    <div>
+      <h3>Importar</h3>
+      <p>Toca <b>Importar</b> y pega el texto o el enlace. Antes de importar, la app dice qué va a añadir, por ejemplo «Se añadirán 1 lista de temas con 3 temas: Boda». Toca <b>Importar</b> para confirmar.</p>
+      <p>Las listas importadas se <b>añaden</b> a las tuyas; nunca reemplazan nada. Si ya tienes una lista con el mismo nombre, la nueva se llama, por ejemplo, «Boda (2)».</p>
+      <p>Al abrir un enlace compartido, la app muestra directamente esta vista previa.</p>
+      <div class="box"><b>Copia de seguridad:</b> tus listas se guardan solo en este navegador. Para no perderlas (al cambiar de celular o borrar los datos del navegador), usa <b>Compartir → Todas → Copiar texto</b> y guarda el texto en una nota.</div>
+    </div>
+  </div>
+  </section>
+</section>
+
+<section>
+  <h2>8. Instalar en el celular y usar sin conexión</h2>
+  <p>Multimetrónomo es una página web que se puede <b>instalar como una app</b>: queda con su ícono en la pantalla de inicio, se abre a pantalla completa y funciona <b>sin conexión</b> después de abrirla una vez con internet.</p>
+  <table>
+    <tr><th>Celular</th><th>Cómo instalarla</th></tr>
+    <tr><td><b>Android</b> (Chrome)</td><td>Abre la app, toca el menú <b>⋮</b> y elige <b>Instalar app</b> o <b>Añadir a pantalla de inicio</b>.</td></tr>
+    <tr><td><b>iPhone / iPad</b> (Safari)</td><td>Abre la app, toca <b>Compartir</b> (el cuadrado con la flecha) y elige <b>Añadir a pantalla de inicio</b>.</td></tr>
+  </table>
+  <p class="small">Las actualizaciones se descargan solas la próxima vez que abres la app con conexión.</p>
+
+  <h2 style="margin-top:16pt">9. Preguntas frecuentes</h2>
+  <div class="faq">
+    <h3>No suena.</h3>
+    <p>Comprueba que el <b>altavoz</b> de la app no esté tachado y que el volumen del celular esté alto. En iPhone la app suena aunque el interruptor de silencio esté activado (en iOS 17 o posterior); en versiones anteriores, desactívalo. Si recibiste una llamada, vuelve a tocar ▶.</p>
+    <h3>El sonido y la pelota no coinciden del todo.</h3>
+    <p>Con auriculares Bluetooth el sonido llega con algo de retraso. La app lo compensa cuando el navegador informa de ese retraso; si aun así se nota, usa auriculares con cable o el altavoz.</p>
+    <h3>La pantalla se apaga.</h3>
+    <p>Algunos navegadores no permiten mantenerla encendida. Sube el tiempo de bloqueo de pantalla en los ajustes del celular mientras tocas.</p>
+    <h3>Se cambió el tempo sin querer.</h3>
+    <p>El deslizante ya solo responde al arrastre de lado. Los demás controles necesitan un toque: si ocurre, revisa que no estés tocando − / + al desplazar.</p>
+    <h3>El enlace compartido no abre la lista.</h3>
+    <p>Algunas apps cortan los enlaces largos. Pide que te manden el <b>texto</b> y pégalo en <b>Importar</b>; también puedes pegar ahí el enlace.</p>
+    <h3>¿Dónde se guardan mis datos?</h3>
+    <p>Solo en tu navegador, en este celular. La app no envía nada a ningún servidor. Para pasarlos a otro dispositivo, comparte <b>Todas</b> las listas como texto e impórtalo allí.</p>
+    <h3>¿Cómo vuelvo a ver la guía?</h3>
+    <p>Con el botón <b>?</b> de la cabecera.</p>
+  </div>
+</section>
+
+</body>
+</html>
